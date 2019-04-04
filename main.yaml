@@ -90,8 +90,20 @@
       win_copy:
         src: /root/templates/hello.js
         dest: C:\Program Files\nodejs\hello.js
+        when: ansible_os_family == 'Windows'
+
+   - name: stop hello.js
+      win_command: powershell.exe Stop-Process -processname node*
+      when: ansible_os_family == 'Windows'
+
+    - name: install npm
+      win_command: powershell.exe npm install
+      when: ansible_os_family == 'Windows'
+
+    - name: install pm2
+      win_command: powershell.exe npm install pm2 -g
       when: ansible_os_family == 'Windows'
 
     - name: start hello.js
-      win_command: powershell.exe "cd 'C:\Program Files\nodejs\'; node hello.js"
+      win_command: powershell.exe pm2 start hello.js
       when: ansible_os_family == 'Windows'
