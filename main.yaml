@@ -22,10 +22,10 @@
       become: yes
       when: ansible_os_family == 'RedHat'
     
-    - name: start server
-      command: bash -lc "cd /root && pm2 start hello.js"
-      become: yes
-      when: ansible_os_family == 'RedHat'
+ #   - name: start server
+  #    command: bash -lc "cd /root && pm2 start hello.js"
+#      become: yes
+#      when: ansible_os_family == 'RedHat'
 
     - name: stop server
       command: bash -lc "cd /root && pm2 stop hello.js"
@@ -67,10 +67,10 @@
       become: yes
       when: ansible_os_family == 'Debian'
       
-    - name: start server
-      command: bash -lc "cd /root && pm2 start hello.js"
-      become: yes
-      when: ansible_os_family == 'Debian'
+#    - name: start server
+#      command: bash -lc "cd /root && pm2 start hello.js"
+#      become: yes
+#      when: ansible_os_family == 'Debian'
 
       - name: stop server
       command: bash -lc "cd /root && pm2 stop hello.js"
